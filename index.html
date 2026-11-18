@@ -175,24 +175,25 @@ em{color:var(--copper);font-weight:400}
 .hero-video-toggle{position:absolute;bottom:12px;right:12px;z-index:4;min-height:40px;padding:8px 13px;border:1px solid #b7815c;border-radius:100px;background:#fff9f0ed;color:#633b26;font:700 .75rem var(--sans);cursor:pointer}
 @media(prefers-reduced-motion:reduce){.hero-video{transition:none}}
 
-/* Full-width brand film with a separate editorial introduction. */
-.cinematic-hero{display:flex;flex-direction:column;gap:0;width:100%;min-height:0;padding:0}
-.cinematic-hero .hero-art{width:100%;height:auto;min-height:0;aspect-ratio:16/9;max-height:calc(100svh - 76px);border:0;border-radius:0;background:#ede1cc;animation:none}
-.cinematic-hero .hero-art::before{display:none}
-.cinematic-hero .hero-video{object-fit:contain;background:#ede1cc}
-.cinematic-hero .tiger{width:auto;max-width:50%;height:80%;object-fit:contain}
-.cinematic-hero .hero-video-toggle{bottom:20px;right:clamp(18px,3vw,50px);min-height:44px;padding:10px 17px;background:#fff9f0e8;backdrop-filter:blur(8px)}
-.cinematic-hero .intro{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr);column-gap:7%;padding-block:40px 48px;animation:none}
-.cinematic-hero .intro .eyebrow{grid-column:1/-1;margin-bottom:15px}
-.cinematic-hero h1{grid-column:1;grid-row:2/4;font-size:clamp(2.5rem,5.3vw,5rem);line-height:1.03;margin:0;letter-spacing:-.055em}
-.cinematic-hero .lede{grid-column:2;align-self:end;font-size:clamp(.95rem,1.35vw,1.15rem)}
-.cinematic-hero .actions{grid-column:2;align-self:start;margin-top:20px;gap:16px}
+
+/* Side-by-side introduction and a softly blended complete brand film. */
+.split-film-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.16fr);align-items:center;gap:3%;min-height:clamp(540px,46vw,710px);padding-block:65px}
+.split-film-hero .intro{grid-column:1;grid-row:1;min-width:0;animation:none}
+.split-film-hero h1{font-size:clamp(2.5rem,4.6vw,4.65rem);line-height:1.04;margin:20px 0 22px;letter-spacing:-.06em}
+.split-film-hero .lede{font-size:clamp(.98rem,1.35vw,1.16rem);max-width:35ch}
+.split-film-hero .actions{gap:18px;margin-top:26px}
+.split-film-hero .hero-art{grid-column:2;grid-row:1;width:100%;height:auto;min-height:0;max-height:none;aspect-ratio:16/9;border:0;border-radius:0;background:var(--bg);overflow:visible;animation:none}
+.split-film-hero .hero-art::before{display:none}
+.split-film-hero .hero-video{object-fit:contain;background:transparent;mix-blend-mode:multiply;mask-image:radial-gradient(ellipse 76% 83% at center,#000 56%,transparent 80%)}
+.split-film-hero .tiger{width:55%;height:auto}
+.split-film-hero .hero-video-toggle{bottom:-43px;right:12px;min-height:36px;padding:7px 12px;background:transparent;border-color:var(--line);font-size:.68rem}
 @media(max-width:740px){
-.cinematic-hero .hero-art{width:100%;aspect-ratio:16/9;max-height:none}
-.cinematic-hero .intro{display:block;padding-block:26px 32px}
-.cinematic-hero h1{font-size:clamp(2.35rem,8.8vw,4rem);margin:0 0 16px}
-.cinematic-hero .hero-video-toggle{bottom:10px;right:12px;padding:7px 10px;min-height:36px;font-size:.66rem}
-.cinematic-hero .intro .eyebrow{font-size:.58rem;letter-spacing:.12em}
+.split-film-hero{grid-template-columns:minmax(0,1fr);gap:25px;min-height:0;padding-block:42px 65px}
+.split-film-hero .intro{grid-column:1;grid-row:1}
+.split-film-hero .hero-art{grid-column:1;grid-row:2;justify-self:center;width:100%;max-width:620px;aspect-ratio:16/9}
+.split-film-hero h1{font-size:clamp(2.35rem,9.2vw,4rem);margin:16px 0}
+.split-film-hero .eyebrow{font-size:.59rem;letter-spacing:.12em}
+.split-film-hero .hero-video-toggle{bottom:-36px;right:5px}
 }
 </style>
 
@@ -206,7 +207,7 @@ em{color:var(--copper);font-weight:400}
   </div>
 </header>
 <main id="main">
-<section class="hero cinematic-hero" id="home">
+<section class="hero wrap split-film-hero" id="home">
   <div class="hero-art" aria-label="Cholan Web Studio tiger brand film">
     <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="Create%20a%20cinematic%20luxury%20brand%20%20896816%20x93.mp4" type="video/mp4"></video>
     <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
@@ -215,7 +216,7 @@ em{color:var(--copper);font-weight:400}
     <span class="spark">✦</span><span class="spark second">✦</span>
     <span class="art-caption" aria-hidden="true">DESIGN · DEVELOP · DELIVER</span>
   </div>
-  <div class="intro wrap">
+  <div class="intro">
     <p class="eyebrow"><span></span> INDEPENDENT IT STUDIO · CUDDALORE</p>
     <h1>Good work deserves<br> a <em>great website.</em></h1>
     <p class="lede">We design and build websites and business software for teams that are ready to grow.</p>
