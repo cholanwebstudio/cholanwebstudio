@@ -176,24 +176,37 @@ em{color:var(--copper);font-weight:400}
 @media(prefers-reduced-motion:reduce){.hero-video{transition:none}}
 
 
-/* Side-by-side introduction and a softly blended complete brand film. */
-.split-film-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.16fr);align-items:center;gap:3%;min-height:clamp(540px,46vw,710px);padding-block:65px}
-.split-film-hero .intro{grid-column:1;grid-row:1;min-width:0;animation:none}
-.split-film-hero h1{font-size:clamp(2.5rem,4.6vw,4.65rem);line-height:1.04;margin:20px 0 22px;letter-spacing:-.06em}
-.split-film-hero .lede{font-size:clamp(.98rem,1.35vw,1.16rem);max-width:35ch}
-.split-film-hero .actions{gap:18px;margin-top:26px}
-.split-film-hero .hero-art{grid-column:2;grid-row:1;width:100%;height:auto;min-height:0;max-height:none;aspect-ratio:16/9;border:0;border-radius:0;background:var(--bg);overflow:visible;animation:none}
-.split-film-hero .hero-art::before{display:none}
-.split-film-hero .hero-video{object-fit:contain;background:transparent;mix-blend-mode:multiply;mask-image:radial-gradient(ellipse 76% 83% at center,#000 56%,transparent 80%)}
-.split-film-hero .tiger{width:55%;height:auto}
-.split-film-hero .hero-video-toggle{bottom:-43px;right:12px;min-height:36px;padding:7px 12px;background:transparent;border-color:var(--line);font-size:.68rem}
+
+/* Navigation floats directly over the full-width brand film. */
+.header{position:absolute;inset:0 0 auto;min-width:0;background:transparent;border:0;backdrop-filter:none}
+.top{min-height:84px}
+.header .brand,.header nav{position:relative;z-index:1}
+.header .nav-cta{border-color:#a8693f80;background:#fff9f022}
+.overlay-film-hero{display:block;width:100%;min-height:0;padding:0;margin:0}
+.overlay-film-hero .hero-art{display:grid;width:100%;height:auto;min-height:0;max-height:none;aspect-ratio:16/9;border:0;border-radius:0;overflow:hidden;background:var(--bg);animation:none}
+.overlay-film-hero .hero-art::before{display:none}
+.overlay-film-hero .hero-video{width:100%;height:100%;object-fit:contain;background:transparent;mix-blend-mode:normal;mask-image:none}
+.overlay-film-hero .tiger{width:auto;height:72%;max-width:45%;object-fit:contain}
+.overlay-film-hero .hero-video-toggle{bottom:18px;right:clamp(16px,3vw,48px);min-height:40px;padding:9px 15px;background:#fff9f0c9;border-color:#b7815c70}
+.studio-intro{padding-block:42px 50px}
+.studio-intro .intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:0 7%;animation:none}
+.studio-intro .eyebrow{grid-column:1/-1;margin-bottom:14px}
+.studio-intro h1{grid-column:1;grid-row:2/4;font-size:clamp(2.5rem,5vw,4.7rem);line-height:1.05;margin:0;letter-spacing:-.055em}
+.studio-intro .lede{grid-column:2;align-self:end}
+.studio-intro .actions{grid-column:2;align-self:start;margin-top:20px}
 @media(max-width:740px){
-.split-film-hero{grid-template-columns:minmax(0,1fr);gap:25px;min-height:0;padding-block:42px 65px}
-.split-film-hero .intro{grid-column:1;grid-row:1}
-.split-film-hero .hero-art{grid-column:1;grid-row:2;justify-self:center;width:100%;max-width:620px;aspect-ratio:16/9}
-.split-film-hero h1{font-size:clamp(2.35rem,9.2vw,4rem);margin:16px 0}
-.split-film-hero .eyebrow{font-size:.59rem;letter-spacing:.12em}
-.split-film-hero .hero-video-toggle{bottom:-36px;right:5px}
+.top{min-height:64px}
+.header .wrap{width:calc(100% - 28px)}
+.header .brand img{width:25px;height:auto}
+.header .brand span{font-size:1rem}
+.header nav{gap:12px;font-size:.72rem}
+.header .nav-cta{padding:7px 10px}
+.overlay-film-hero .hero-art{aspect-ratio:16/9}
+.overlay-film-hero .hero-video-toggle{bottom:7px;right:10px;min-height:30px;padding:5px 9px;font-size:.6rem}
+.studio-intro{padding-block:26px 32px}
+.studio-intro .intro{display:block}
+.studio-intro h1{font-size:clamp(2.25rem,9vw,3.7rem);margin:14px 0}
+.studio-intro .eyebrow{font-size:.58rem;letter-spacing:.12em}
 }
 </style>
 
@@ -207,7 +220,7 @@ em{color:var(--copper);font-weight:400}
   </div>
 </header>
 <main id="main">
-<section class="hero wrap split-film-hero" id="home">
+<section class="hero overlay-film-hero" id="home">
   <div class="hero-art" aria-label="Cholan Web Studio tiger brand film">
     <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="Create%20a%20cinematic%20luxury%20brand%20%20896816%20x93.mp4" type="video/mp4"></video>
     <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
@@ -216,6 +229,8 @@ em{color:var(--copper);font-weight:400}
     <span class="spark">✦</span><span class="spark second">✦</span>
     <span class="art-caption" aria-hidden="true">DESIGN · DEVELOP · DELIVER</span>
   </div>
+</section>
+<section class="studio-intro wrap" aria-label="About Cholan Web Studio">
   <div class="intro">
     <p class="eyebrow"><span></span> INDEPENDENT IT STUDIO · CUDDALORE</p>
     <h1>Good work deserves<br> a <em>great website.</em></h1>
