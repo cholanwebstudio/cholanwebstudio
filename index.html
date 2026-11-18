@@ -177,9 +177,9 @@ em{color:var(--copper);font-weight:400}
 
 /* Full-width brand film with a separate editorial introduction. */
 .cinematic-hero{display:flex;flex-direction:column;gap:0;width:100%;min-height:0;padding:0}
-.cinematic-hero .hero-art{width:100%;height:auto;min-height:0;aspect-ratio:16/9;max-height:calc(100svh - 76px);border:0;border-radius:0;background:#ede1cc;animation:none}
+.cinematic-hero .hero-art{width:100%;height:auto;min-height:0;aspect-ratio:16/9;max-height:none;border:0;border-radius:0;background:#ede1cc;animation:none}
 .cinematic-hero .hero-art::before{display:none}
-.cinematic-hero .hero-video{object-fit:cover;background:#ede1cc}
+.cinematic-hero .hero-video{object-fit:contain;background:#ede1cc}
 .cinematic-hero .tiger{width:auto;max-width:50%;height:80%;object-fit:contain}
 .cinematic-hero .hero-video-toggle{bottom:20px;right:clamp(18px,3vw,50px);min-height:44px;padding:10px 17px;background:#fff9f0e8;backdrop-filter:blur(8px)}
 .cinematic-hero .intro{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr);column-gap:7%;padding-block:40px 48px;animation:none}
