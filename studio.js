@@ -187,7 +187,6 @@ function fitLiveFrame() {
   liveFrame.style.transform = 'scale(' + scale + ')';
 }
 const screenResize = new ResizeObserver(fitLiveFrame);
-const buttons = new Map();
 const phonePreview = matchMedia('(max-width:640px)');
 phonePreview.addEventListener('change', () => {
   const screen = activeScreen;
@@ -198,7 +197,6 @@ function showLive(screen) {
   if (screen === activeScreen) return;
   if (activeScreen) {
     screenResize.unobserve(activeScreen);
-    buttons.get(activeScreen).textContent = 'Play live preview';
     liveFrame.remove();
   }
   activeScreen = screen;
@@ -233,7 +231,6 @@ function showLive(screen) {
     screen.append(liveFrame);
     screenResize.observe(screen);
   }
-  buttons.get(screen).textContent = 'Stop live preview';
 }
 const liveObserver = new IntersectionObserver(entries => {
   for (const entry of entries) ratios.set(entry.target, entry.intersectionRatio);
@@ -243,20 +240,7 @@ const liveObserver = new IntersectionObserver(entries => {
     .sort((a,b) => ratios.get(b) - ratios.get(a))[0];
   if (best) showLive(best);
 }, {threshold:[0,0.45,0.7,0.95,1]});
-for (const screen of screens) {
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.className = 'preview-toggle';
-  button.textContent = 'Play live preview';
-  button.addEventListener('click', () => {
-    automatic = false;
-    showLive(activeScreen === screen ? null : screen);
-  });
-  const container = screen === featuredScreen ? document.querySelector('.featured-copy') : screen.closest('article');
-  container.append(button);
-  buttons.set(screen, button);
-  liveObserver.observe(screen);
-}
+for (const screen of screens) liveObserver.observe(screen);
 motion.addEventListener('change', () => {
   automatic = motion.matches && !navigator.connection?.saveData && !['slow-2g','2g','3g'].includes(navigator.connection?.effectiveType);
   if (!automatic) showLive(null);

@@ -211,8 +211,6 @@ em{color:var(--accent-ink);font-weight:400}
 
 .project-preview,.featured-screen{position:relative;overflow:hidden}
 .live-site-frame{position:absolute;inset:0;border:0;pointer-events:none;transform-origin:top left}
-.preview-toggle{padding:8px 0;background:transparent;color:var(--accent-ink);border:0;text-decoration:underline;font:600 .8rem var(--sans);cursor:pointer;min-height:40px}
-.featured-project .preview-toggle{color:var(--champagne)}
 
 .featured-project{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(18px,2.5vw,32px)}
 .featured-project .desktop-preview{width:100%;max-width:500px;justify-self:end}
@@ -248,13 +246,11 @@ em{color:var(--accent-ink);font-weight:400}
   .featured-copy{padding:18px}
   .featured-copy h3{margin:8px 0;font-size:2rem}
   .featured-copy .actions{display:inline-flex;margin:14px 12px 0 0}
-  .featured-copy .preview-toggle{min-height:44px}
   .filters{display:flex;flex-wrap:nowrap;overflow-x:auto;margin:18px 0;gap:6px;padding:5px 3px;scrollbar-width:thin}
   .filters button{flex:none;min-height:44px}
   .projects{gap:24px}
   .project-info{padding-top:10px}
   .project h3{font-size:1.12rem}
-  .preview-toggle{min-height:44px}
   .service-list article{padding-block:16px}
   .contact-inner .button{width:100%}
 }
