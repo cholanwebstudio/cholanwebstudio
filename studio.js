@@ -97,6 +97,11 @@ function revealBrandFilm() {
 function showBrandPoster() {
   filmFrame.classList.remove('video-ready');
 }
+// Use the compact film when bandwidth information is limited or unavailable.
+function highBandwidth() {
+  const connection = navigator.connection;
+  return connection?.effectiveType === '4g' && connection.downlink >= 5 && !connection.saveData;
+}
 function configureBrandFilm() {
   showBrandPoster();
   brandVideo.muted = true;
@@ -105,7 +110,9 @@ function configureBrandFilm() {
     brandVideo.pause();
     return;
   }
-  const source = portraitFilm.matches ? brandVideo.dataset.mobileSrc : brandVideo.dataset.desktopSrc;
+  const original = portraitFilm.matches ? brandVideo.dataset.mobileSrc : brandVideo.dataset.desktopSrc;
+  const compact = portraitFilm.matches ? 'assets/tiger-portrait-lite.mp4' : 'assets/tiger-landscape-lite.mp4';
+  const source = highBandwidth() ? original : compact;
   if (brandVideo.getAttribute('src') !== source) {
     brandVideo.src = source;
     brandVideo.load();
@@ -168,7 +175,7 @@ const screens = [featuredScreen, ...document.querySelectorAll('.project-preview'
 const ratios = new Map();
 let activeScreen;
 let liveFrame;
-let automatic = motion.matches && !navigator.connection?.saveData;
+let automatic = motion.matches && !navigator.connection?.saveData && !['slow-2g','2g','3g'].includes(navigator.connection?.effectiveType);
 
 function fitLiveFrame() {
   if (!(liveFrame instanceof HTMLIFrameElement)) return;
@@ -251,6 +258,6 @@ for (const screen of screens) {
   liveObserver.observe(screen);
 }
 motion.addEventListener('change', () => {
-  automatic = motion.matches && !navigator.connection?.saveData;
+  automatic = motion.matches && !navigator.connection?.saveData && !['slow-2g','2g','3g'].includes(navigator.connection?.effectiveType);
   if (!automatic) showLive(null);
 });
