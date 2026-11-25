@@ -268,3 +268,21 @@ em{color:var(--accent-ink);font-weight:400}
   .film-frame{height:auto;aspect-ratio:9/16}
   .film-frame .hero-video,.film-frame .brand-poster img{object-fit:contain}
 }
+
+.case-grid{gap:clamp(14px,2vw,26px)}
+.case-card{padding:clamp(20px,2.3vw,32px);background:var(--case-bg);border-top:4px solid var(--case-accent)}
+#case-hotel{--case-bg:#e5efeb;--case-accent:#17584d}
+#case-school{--case-bg:#eee8f7;--case-accent:#614483}
+#case-amudhan{--case-bg:#f8e7dc;--case-accent:#893f22}
+.case-card .eyebrow,.case-card .case-cta{color:var(--case-accent)}
+.contact-inner{display:grid;grid-template-columns:1fr minmax(0,1fr);align-items:start}
+#enquiry-form{display:grid;gap:14px;background:var(--slate);padding:clamp(18px,3vw,36px)}
+#enquiry-form label{display:grid;gap:5px;font-weight:600;font-size:.88rem}
+#enquiry-form input,#enquiry-form select,#enquiry-form textarea{width:100%;min-width:0;border:1px solid #aeb7c1;border-radius:3px;padding:10px 12px;background:var(--paper);color:var(--ink);font:400 1rem/1.45 var(--sans)}
+#enquiry-form textarea{resize:vertical}
+#enquiry-form .button{border:0;cursor:pointer;margin:0}
+#enquiry-form small{color:#d8dde3}
+.whatsapp-float{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:4;display:grid;place-items:center;width:50px;height:50px;border:2px solid white;border-radius:50%;background:#08734c;color:white;box-shadow:0 3px 14px #0b101833}
+.whatsapp-float:hover{background:#075d40}
+.footer{padding-right:60px}
+@media(max-width:740px){.contact-inner{grid-template-columns:1fr;gap:22px}}
