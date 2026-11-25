@@ -261,3 +261,14 @@ em{color:var(--accent-ink);font-weight:400}
 @media (max-width:640px) and (orientation:portrait){
   .film-frame{height:min(148vw,70svh);aspect-ratio:auto}
 }
+@media(max-width:640px){
+  .project-film{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--night);pointer-events:none;opacity:0}
+  .project-film.playing{opacity:1}
+  .filters{flex-wrap:wrap;overflow:visible;gap:6px}
+  .filters button{padding-inline:12px}
+  .film-strip button{position:static;grid-column:1/-1;justify-self:start;background:transparent;color:var(--champagne);padding:0;text-decoration:underline;min-height:32px}
+}
+@media(max-width:640px) and (orientation:portrait){
+  .film-frame{height:auto;aspect-ratio:9/16}
+  .film-frame .hero-video,.film-frame .brand-poster img{object-fit:contain}
+}
