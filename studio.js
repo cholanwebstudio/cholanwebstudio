@@ -38,30 +38,6 @@ if ('IntersectionObserver' in window && motion.matches) {
   for (const project of projects) observer.observe(project);
 }
 
-const previewControls = document.querySelector('.preview-controls');
-const hotelPanel = document.querySelector('#hotel-preview-panel');
-const hotelViews = {
-  overview: ['1.webp', 'Hotel VKM Cuddalore', 'Residency & Mahal · Cuddalore'],
-  rooms: ['residency%20suite.webp', 'Rooms & suites', 'AC rooms and family suites'],
-  events: ['vkm%20marrage.webp', 'Event venues', 'Marriage and function halls'],
-};
-previewControls.hidden = false;
-previewControls.addEventListener('click', (event) => {
-  const button = event.target.closest('button[data-preview]');
-  if (!button || button.getAttribute('aria-pressed') === 'true') return;
-  const [image, title, description] = hotelViews[button.dataset.preview];
-  hotelPanel.querySelector('img').src = 'https://hotelvkm.in/' + image;
-  hotelPanel.querySelector('strong').textContent = title;
-  hotelPanel.querySelector('span').textContent = description;
-  for (const choice of previewControls.querySelectorAll('button')) {
-    choice.setAttribute('aria-pressed', String(choice === button));
-  }
-  if (motion.matches) {
-    hotelPanel.classList.remove('swap');
-    requestAnimationFrame(() => hotelPanel.classList.add('swap'));
-  }
-});
-
 const catalogue = new Map([
   ['sparklers', { name: 'Sparklers', price: 75 }],
   ['flower-pots', { name: 'Flower Pots', price: 120 }],
