@@ -245,3 +245,20 @@ motion.addEventListener('change', () => {
   automatic = motion.matches && !navigator.connection?.saveData && !['slow-2g','2g','3g'].includes(navigator.connection?.effectiveType);
   if (!automatic) showLive(null);
 });
+
+const enquiryForm = document.querySelector('#enquiry-form');
+enquiryForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const fields = new FormData(enquiryForm);
+  const message = [
+    'Hi Cholan Web Studio, I have a project enquiry.',
+    'Name: ' + fields.get('client').trim(),
+    fields.get('business').trim() && 'Business: ' + fields.get('business').trim(),
+    'Service: ' + fields.get('service'),
+    'Project details: ' + fields.get('details').trim()
+  ].filter(Boolean).join('\n');
+  const destination = new URL(document.querySelector('.whatsapp-float').href);
+  destination.searchParams.set('text', message);
+  window.location.assign(destination.href);
+});
+enquiryForm.hidden = false;
