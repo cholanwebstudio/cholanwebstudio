@@ -181,3 +181,78 @@ filmToggle.addEventListener('click', () => {
 for (const event of ['playing','pause','error']) brandVideo.addEventListener(event, updateFilmToggle);
 motion.addEventListener('change', updateFilmToggle);
 updateFilmToggle();
+
+// Render one visible client homepage at a time at a scaled browser viewport.
+const featuredImage = document.querySelector('.desktop-preview img');
+const featuredScreen = document.createElement('div');
+featuredScreen.className = 'featured-screen';
+featuredImage.replaceWith(featuredScreen);
+featuredScreen.append(featuredImage);
+const screens = [featuredScreen, ...document.querySelectorAll('.project-preview')];
+const ratios = new Map();
+let activeScreen;
+let liveFrame;
+let automatic = motion.matches && !navigator.connection?.saveData;
+
+function fitLiveFrame() {
+  if (!liveFrame) return;
+  const width = activeScreen.clientWidth;
+  const viewport = window.innerWidth <= 600 ? 390 : 1100;
+  const scale = width / viewport;
+  liveFrame.style.width = viewport + 'px';
+  liveFrame.style.height = Math.ceil(activeScreen.clientHeight / scale) + 'px';
+  liveFrame.style.transform = 'scale(' + scale + ')';
+}
+const screenResize = new ResizeObserver(fitLiveFrame);
+const buttons = new Map();
+function showLive(screen) {
+  if (screen === activeScreen) return;
+  if (activeScreen) {
+    screenResize.unobserve(activeScreen);
+    buttons.get(activeScreen).textContent = 'Play live preview';
+    liveFrame.remove();
+  }
+  activeScreen = screen;
+  liveFrame = null;
+  if (!screen) return;
+  const project = screen.closest('article');
+  const link = project.querySelector('a[href^="https:"]');
+  liveFrame = document.createElement('iframe');
+  liveFrame.className = 'live-site-frame';
+  liveFrame.title = project.querySelector('h3').textContent + ' live preview';
+  liveFrame.tabIndex = -1;
+  liveFrame.setAttribute('aria-hidden', 'true');
+  liveFrame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+  liveFrame.allow = 'autoplay';
+  liveFrame.src = link.href;
+  fitLiveFrame();
+  screen.append(liveFrame);
+  screenResize.observe(screen);
+  buttons.get(screen).textContent = 'Stop live preview';
+}
+const liveObserver = new IntersectionObserver(entries => {
+  for (const entry of entries) ratios.set(entry.target, entry.intersectionRatio);
+  if (activeScreen && !ratios.get(activeScreen)) showLive(null);
+  if (!automatic) return;
+  const best = screens.filter(screen => ratios.get(screen) >= 0.45)
+    .sort((a,b) => ratios.get(b) - ratios.get(a))[0];
+  if (best) showLive(best);
+}, {threshold:[0,0.45,0.7,0.95,1]});
+for (const screen of screens) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'preview-toggle';
+  button.textContent = 'Play live preview';
+  button.addEventListener('click', () => {
+    automatic = false;
+    showLive(activeScreen === screen ? null : screen);
+  });
+  const container = screen === featuredScreen ? document.querySelector('.featured-copy') : screen.closest('article');
+  container.append(button);
+  buttons.set(screen, button);
+  liveObserver.observe(screen);
+}
+motion.addEventListener('change', () => {
+  automatic = motion.matches && !navigator.connection?.saveData;
+  if (!automatic) showLive(null);
+});
