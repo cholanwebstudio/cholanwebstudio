@@ -152,18 +152,15 @@ em{color:var(--accent-ink);font-weight:400}
 .button:hover,.header .nav-cta:hover{background:var(--champagne);color:var(--night)}
 .header nav a:hover,.header .brand:hover{color:var(--champagne)}
 .menu-toggle{display:none}
-.brand-hero{padding-block:clamp(30px,5vw,85px)}
-.hero-layout{display:grid;grid-template-columns:1fr 1.05fr;gap:5%;align-items:center}
-.hero-copy{min-width:0}
-.hero-copy .eyebrow,.contact .eyebrow,.contact em,.hero-copy em{color:var(--champagne)}
-.hero-copy h1{font-size:clamp(3.4rem,6.5vw,7rem);line-height:.99;letter-spacing:-.06em}
-.hero-copy p:not(.eyebrow),.contact p:not(.eyebrow){color:#d8dde3;max-width:39ch}
-.film-frame{position:relative;aspect-ratio:16/10;overflow:hidden;background:#f6e3cf}
-.brand-poster,.hero-video,.brand-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.film-frame{position:relative;width:100%;aspect-ratio:16/9;max-height:calc(100svh - 145px);overflow:hidden;background:#f7e5d2}
+.brand-poster,.hero-video,.brand-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .hero-video{opacity:0}
 .video-ready .hero-video{opacity:1}
-.film-caption{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--champagne);font-size:.76rem;padding-top:9px}
-.film-caption button{background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;min-height:32px}
+.film-strip{display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px;padding-block:12px}
+.film-strip h1{margin:0 auto 0 0;font:500 clamp(1rem,2vw,1.5rem)/1.25 var(--serif);letter-spacing:0}
+.film-strip button{background:transparent;border:0;color:var(--champagne);font:inherit;text-decoration:underline;cursor:pointer;min-height:44px}
+.contact .eyebrow,.contact em{color:var(--champagne)}
+.contact p:not(.eyebrow){color:#d8dde3}
 .studio-intro{padding-block:clamp(45px,7vw,100px)}
 .intro{display:grid;grid-template-columns:1fr 1.25fr;gap:5%;align-items:start}
 .intro h2{font-size:clamp(2.4rem,4vw,4.4rem)}
@@ -191,13 +188,12 @@ em{color:var(--accent-ink);font-weight:400}
 .footer{min-height:96px}
 :focus-visible{outline:3px solid currentColor!important;outline-offset:4px}
 @media(max-width:740px){
- .hero-layout,.intro,.services{grid-template-columns:1fr;gap:26px}
- .hero-copy h1{font-size:clamp(3.1rem,10vw,4.7rem)}
+ .intro,.services{grid-template-columns:1fr;gap:26px}
  .film-frame{aspect-ratio:16/9}
  .case-grid{gap:22px}
 }
 @media(max-width:740px) and (orientation:portrait){
- .film-frame{aspect-ratio:1.58}
+ .film-frame{aspect-ratio:9/16;max-height:calc(100svh - 100px)}
  .hero-video,.brand-poster img{object-fit:cover;object-position:center}
 }
 @media(max-width:640px){
