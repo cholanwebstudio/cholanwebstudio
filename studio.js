@@ -171,9 +171,9 @@ let liveFrame;
 let automatic = motion.matches && !navigator.connection?.saveData;
 
 function fitLiveFrame() {
-  if (!liveFrame) return;
+  if (!(liveFrame instanceof HTMLIFrameElement)) return;
   const width = activeScreen.clientWidth;
-  const viewport = window.innerWidth <= 600 ? 390 : 1100;
+  const viewport = 1100;
   const scale = width / viewport;
   liveFrame.style.width = viewport + 'px';
   liveFrame.style.height = Math.ceil(activeScreen.clientHeight / scale) + 'px';
@@ -181,6 +181,12 @@ function fitLiveFrame() {
 }
 const screenResize = new ResizeObserver(fitLiveFrame);
 const buttons = new Map();
+const phonePreview = matchMedia('(max-width:640px)');
+phonePreview.addEventListener('change', () => {
+  const screen = activeScreen;
+  showLive(null);
+  if (screen) showLive(screen);
+});
 function showLive(screen) {
   if (screen === activeScreen) return;
   if (activeScreen) {
@@ -193,17 +199,33 @@ function showLive(screen) {
   if (!screen) return;
   const project = screen.closest('article');
   const link = project.querySelector('a[href^="https:"]');
-  liveFrame = document.createElement('iframe');
-  liveFrame.className = 'live-site-frame';
-  liveFrame.title = project.querySelector('h3').textContent + ' live preview';
-  liveFrame.tabIndex = -1;
-  liveFrame.setAttribute('aria-hidden', 'true');
-  liveFrame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
-  liveFrame.allow = 'autoplay';
-  liveFrame.src = link.href;
-  fitLiveFrame();
-  screen.append(liveFrame);
-  screenResize.observe(screen);
+  if (phonePreview.matches && project.dataset.previewFilm) {
+    const video = document.createElement('video');
+    liveFrame = video;
+    video.className = 'project-film';
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.setAttribute('aria-hidden', 'true');
+    video.addEventListener('playing', () => video.classList.add('playing'));
+    const fallback = () => { if (liveFrame === video) showLive(null); };
+    video.addEventListener('error', fallback);
+    video.src = project.dataset.previewFilm;
+    screen.append(video);
+    video.play().catch(fallback);
+  } else {
+    liveFrame = document.createElement('iframe');
+    liveFrame.className = 'live-site-frame';
+    liveFrame.title = project.querySelector('h3').textContent + ' live preview';
+    liveFrame.tabIndex = -1;
+    liveFrame.setAttribute('aria-hidden', 'true');
+    liveFrame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+    liveFrame.allow = 'autoplay';
+    liveFrame.src = link.href;
+    fitLiveFrame();
+    screen.append(liveFrame);
+    screenResize.observe(screen);
+  }
   buttons.get(screen).textContent = 'Stop live preview';
 }
 const liveObserver = new IntersectionObserver(entries => {
