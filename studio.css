@@ -8,7 +8,7 @@ a{color:inherit;text-decoration:none}
 button{font:inherit}
 img{display:block;max-width:100%}
 a:focus-visible,button:focus-visible{outline:3px solid #7e371a;outline-offset:5px}
-.wrap{width:min(100% - 100px,1320px);margin-inline:auto}
+.wrap{width:min(100% - 100px,1240px);margin-inline:auto}
 .skip{position:fixed;top:8px;left:8px;padding:10px;background:white;z-index:10;transform:translateY(-150%)}
 .skip:focus{transform:none}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
@@ -27,7 +27,7 @@ nav a:hover,.text-link:hover,.footer>a:last-child:hover{color:var(--accent-ink)}
 .eyebrow span{display:inline-block;width:22px;height:1px;background:currentColor}
 h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.065em;line-height:1}
 h1{font-size:clamp(3rem,6.25vw,5.85rem);margin:21px 0 24px}
-h2{font-size:clamp(2.85rem,5.55vw,6.6rem);margin-top:15px}
+h2{font-size:clamp(2.5rem,4.2vw,4.25rem);margin-top:15px}
 em{color:var(--accent-ink);font-weight:400}
 .lede{font-size:clamp(1rem,1.45vw,1.24rem);max-width:36ch;color:var(--muted)}
 .actions{display:flex;align-items:center;flex-wrap:wrap;gap:21px;margin-top:32px}
@@ -35,7 +35,7 @@ em{color:var(--accent-ink);font-weight:400}
 .button:hover{background:#773a1f;transform:translateY(-3px)}
 .text-link{font-size:.87rem;font-weight:800}
 .text-link span{margin-left:5px}
-.portfolio{background:var(--paper);border-block:1px solid var(--line);padding:clamp(55px,7vw,108px) 0}
+.portfolio{background:var(--paper);border-block:1px solid var(--line);padding:clamp(48px,5.5vw,80px) 0}
 .work-heading{display:flex;align-items:end;justify-content:space-between;gap:22px}
 .work-heading>p{max-width:35ch;color:var(--muted)}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin:29px 0 20px}
@@ -51,13 +51,13 @@ em{color:var(--accent-ink);font-weight:400}
 .project h3{font-size:clamp(.98rem,1.65vw,1.4rem);line-height:1.22}
 .visit{display:grid;flex:0 0 38px;aspect-ratio:1;place-items:center;border-radius:50%;border:1px solid var(--line);color:var(--accent-ink);transition:background .2s,color .2s}
 .project a:hover .visit,.project a:focus-visible .visit{background:var(--accent-ink);color:white}
-.services{padding-block:clamp(58px,8vw,120px)}
+.services{padding-block:clamp(52px,6vw,88px)}
 .services h2{max-width:15ch}
 .service-list{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:30px}
 .service-list article{border-top:1px solid var(--line);padding-top:17px}
 .service-list h3{font-size:1.17rem;margin-bottom:6px}
 .service-list p,.contact p:not(.eyebrow){color:var(--muted);max-width:37ch}
-.contact{background:#f6e4cc;color:var(--ink);border-block:1px solid var(--line);padding-block:clamp(45px,7vw,95px)}
+.contact{background:#f6e4cc;color:var(--ink);border-block:1px solid var(--line);padding-block:clamp(44px,5.5vw,76px)}
 .contact-inner{display:flex;justify-content:space-between;align-items:center;gap:25px}
 .contact p:not(.eyebrow){margin-top:15px}
 .footer{font-size:.8rem;color:var(--muted)}
@@ -112,7 +112,7 @@ em{color:var(--accent-ink);font-weight:400}
 .case-studies,.flash-section{padding-block:clamp(46px,7vw,90px)}
 .case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
 .case-card{display:flex;flex-direction:column;align-items:flex-start;padding:clamp(16px,2.5vw,28px);background:var(--paper);border:1px solid var(--line);border-radius:14px}
-.case-card h3{font:400 clamp(1.48rem,2.6vw,2.5rem)/1.05 var(--serif);margin-top:8px}
+.case-card h3{font:400 clamp(1.48rem,2.15vw,2rem)/1.05 var(--serif);margin-top:8px}
 .case-card dl{color:var(--muted);font-size:.89rem;margin:15px 0}
 .case-card dt{color:var(--ink);font-weight:800;margin-top:9px}
 .case-card dd{margin:0}
@@ -121,7 +121,7 @@ em{color:var(--accent-ink);font-weight:400}
 .case-card:target{outline:2px solid var(--accent-ink);outline-offset:2px}
 .flash-section{background:#f4e5d5;border-block:1px solid var(--line)}
 .flash-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:start;gap:22px}
-.flash-layout h2{margin:12px 0;font-size:clamp(2.6rem,4.5vw,4.4rem)}
+.flash-layout h2{margin:12px 0;font-size:clamp(2.4rem,3.5vw,3.65rem)}
 .flash-layout .text-link{display:inline-block;margin-top:13px}
 .flash-demo{background:var(--paper);padding:clamp(16px,2.5vw,28px);border:1px solid var(--line);border-radius:15px}
 #flash-form{display:grid;grid-template-columns:minmax(0,1fr) minmax(68px,.36fr) auto;align-items:end;gap:8px}
@@ -161,9 +161,9 @@ em{color:var(--accent-ink);font-weight:400}
 .film-strip button{background:transparent;border:0;color:var(--champagne);font:inherit;text-decoration:underline;cursor:pointer;min-height:44px}
 .contact .eyebrow,.contact em{color:#844622}
 .contact p:not(.eyebrow){color:var(--muted)}
-.studio-intro{padding-block:clamp(45px,7vw,100px)}
+.studio-intro{padding-block:clamp(44px,5.5vw,76px)}
 .intro{display:grid;grid-template-columns:1fr 1.25fr;gap:5%;align-items:start}
-.intro h2{font-size:clamp(2.4rem,4vw,4.4rem)}
+.intro h2{font-size:clamp(2.25rem,3.5vw,3.65rem)}
 .intro .lede{max-width:48ch}
 .portfolio{background:#fffdf8}
 
@@ -183,7 +183,7 @@ em{color:var(--accent-ink);font-weight:400}
 .services{border-top:1px solid var(--line);display:grid;grid-template-columns:.65fr 1.35fr;gap:6%}
 .service-list{display:block;margin:0}
 .service-list article{padding-block:24px}
-.service-list h3{font:400 clamp(1.6rem,2.8vw,2.8rem)/1.1 var(--serif)}
+.service-list h3{font:400 clamp(1.5rem,2.15vw,2.15rem)/1.1 var(--serif)}
 .service-list p{max-width:58ch}
 .flash-section{background:#e5e8e8}
 .contact{border:0}
