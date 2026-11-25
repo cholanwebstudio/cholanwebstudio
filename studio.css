@@ -146,13 +146,13 @@ em{color:var(--accent-ink);font-weight:400}
 
 
 
-.header,.brand-hero,.contact{background:var(--night);color:var(--paper)}
-.header{position:relative;z-index:5;border-bottom:1px solid #ffffff28}
+.brand-hero,.contact{background:var(--night);color:var(--paper)}
+.header{position:absolute;inset:0 0 auto;z-index:5;background:transparent;color:var(--night)}
 .header .nav-cta,.button{background:var(--gold);color:var(--night);border:0;border-radius:2px}
 .button:hover,.header .nav-cta:hover{background:var(--champagne);color:var(--night)}
-.header nav a:hover,.header .brand:hover{color:var(--champagne)}
+.header nav a:hover,.header .brand:hover{text-decoration:underline;text-underline-offset:4px}
 .menu-toggle{display:none}
-.film-frame{position:relative;width:100%;aspect-ratio:16/9;max-height:calc(100svh - 145px);overflow:hidden;background:#f7e5d2}
+.film-frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#f7e5d2}
 .brand-poster,.hero-video,.brand-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .hero-video{opacity:0}
 .video-ready .hero-video{opacity:1}
@@ -193,14 +193,14 @@ em{color:var(--accent-ink);font-weight:400}
  .case-grid{gap:22px}
 }
 @media(max-width:740px) and (orientation:portrait){
- .film-frame{aspect-ratio:9/16;max-height:calc(100svh - 100px)}
+ .film-frame{aspect-ratio:9/16}
  .hero-video,.brand-poster img{object-fit:cover;object-position:center}
 }
 @media(max-width:640px){
  .header .top{flex-wrap:wrap;min-height:68px;padding-block:8px}
- .header.nav-enhanced .menu-toggle{display:block;background:transparent;color:var(--paper);border:1px solid #ffffff62;padding:8px 16px;min-height:44px}
+ .header.nav-enhanced .menu-toggle{display:block;background:transparent;color:var(--night);border:1px solid currentColor;padding:8px 16px;min-height:44px}
  .header.nav-enhanced nav{display:none}
- .header.menu-open nav{display:grid;position:absolute;inset:100% 0 auto;background:var(--night);padding:12px 18px 20px}
+ .header.menu-open nav{display:grid;position:absolute;inset:100% 0 auto;background:var(--bg);padding:12px 18px 20px}
  .header nav a{padding:12px}
  .contact-inner .button{margin-top:20px}
 }
