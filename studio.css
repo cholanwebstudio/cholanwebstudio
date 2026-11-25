@@ -174,9 +174,9 @@ em{color:var(--accent-ink);font-weight:400}
 .project,.project-preview,.case-card,.flash-demo{border-radius:0}
 .project,.case-card{background:transparent;border:0;border-top:1px solid var(--line)}
 .project:hover,.project:focus-within{box-shadow:none}
-.projects{gap:24px 20px}
-@media(min-width:900px){.projects{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(min-width:1250px){.projects{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.projects{grid-template-columns:1fr;gap:30px 24px}
+@media(min-width:680px){.projects{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1120px){.projects{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .project-info{padding:14px 0 0}
 .case-card{padding-inline:0}
 .case-grid{gap:4%}
