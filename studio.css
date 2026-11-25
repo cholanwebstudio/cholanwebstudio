@@ -222,3 +222,42 @@ em{color:var(--accent-ink);font-weight:400}
 .featured-copy h3{font-size:clamp(1.85rem,3.4vw,3.3rem)}
 .project h3{font-size:clamp(1rem,1.3vw,1.18rem)}
 @media(max-width:650px){.featured-project{grid-template-columns:1fr}.featured-project .desktop-preview{justify-self:start}}
+
+.phone-enquiry{display:none}
+
+@media (max-width:640px){
+  .wrap{width:calc(100% - 40px)}
+  .header .top{min-height:64px}
+  .header.nav-enhanced .menu-toggle{border:0;padding:0 4px;font-size:.9rem}
+  .header.menu-open nav{inset:100% 14px auto;border:1px solid var(--line);padding:8px 12px;box-shadow:0 8px 22px #0b10181c}
+  .film-strip{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:10px 16px;padding-block:18px 22px}
+  .film-strip h1{grid-column:1/-1;font-size:clamp(1.35rem,5.7vw,1.7rem);line-height:1.13}
+  .film-strip .phone-enquiry{display:inline-flex;min-height:44px;padding:10px 16px}
+  .film-strip .text-link{display:inline-flex;align-items:center;min-height:44px}
+  .film-strip button{position:absolute;right:14px;bottom:calc(100% + 8px);color:var(--ink);background:#fffdf8e8;border-radius:2px;padding:0 10px;font-size:.76rem}
+  .film-strip{position:relative}
+  .studio-intro,.portfolio,.case-studies,.services,.flash-section,.contact{padding-block:38px}
+  .intro,.services{gap:14px}
+  .intro h2,.services h2,.case-studies h2,.flash-layout h2,.contact h2{font-size:clamp(2rem,9vw,2.7rem);margin-top:7px}
+  .intro .lede,.work-heading>p{line-height:1.55}
+  .work-heading>p{margin-top:8px}
+  .featured-project{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:0;overflow:hidden;margin:20px 0}
+  .featured-project .desktop-preview{order:-1;border:0;border-radius:0;box-shadow:none}
+  .featured-project .browser-bar{display:none}
+  .featured-screen,.desktop-preview>img,.project-preview{aspect-ratio:4/3}
+  .featured-copy{padding:18px}
+  .featured-copy h3{margin:8px 0;font-size:2rem}
+  .featured-copy .actions{display:inline-flex;margin:14px 12px 0 0}
+  .featured-copy .preview-toggle{min-height:44px}
+  .filters{display:flex;flex-wrap:nowrap;overflow-x:auto;margin:18px 0;gap:6px;padding:5px 3px;scrollbar-width:thin}
+  .filters button{flex:none;min-height:44px}
+  .projects{gap:24px}
+  .project-info{padding-top:10px}
+  .project h3{font-size:1.12rem}
+  .preview-toggle{min-height:44px}
+  .service-list article{padding-block:16px}
+  .contact-inner .button{width:100%}
+}
+@media (max-width:640px) and (orientation:portrait){
+  .film-frame{height:min(148vw,70svh);aspect-ratio:auto}
+}
